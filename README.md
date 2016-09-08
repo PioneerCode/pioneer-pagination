@@ -10,7 +10,7 @@ Pioneer Pagination is available as a [NuGet package](https://www.nuget.org/packa
 
 ## How does it work?
 1. In your controller, you make a call to ```PaginatedMetaService which``` returns a ```PaginatedMetaModel```.
-2. Your ```PaginatedMetaModel`` is then passed to your view so that the Tag Helper can utilize it. 
+2. Your ```PaginatedMetaModel``` is then passed to your view so that the Tag Helper can utilize it. 
 3. In your view, you bind the ```PaginatedMetaModel`` to an attribute and set a route on another attribute.
 4. The Tag Helper generates a paginated list. 
 
