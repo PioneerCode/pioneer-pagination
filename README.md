@@ -9,9 +9,9 @@ Pioneer Pagination is an ASP.Net Core Tag Helper that produces a paginated list 
 Pioneer Pagination is available as a [NuGet package](https://www.nuget.org/packages/Pioneer.Pagination/). 
 
 ## How does it work?
-1. In your controller, you make a call to ```PaginatedMetaService which``` returns a ```PaginatedMetaModel```.
+1. In your controller, you make a call to ```PaginatedMetaService``` which returns a ```PaginatedMetaModel```.
 2. Your ```PaginatedMetaModel``` is then passed to your view so that the Tag Helper can utilize it. 
-3. In your view, you bind the ```PaginatedMetaModel`` to an attribute and set a route on another attribute.
+3. In your view, you bind the ```PaginatedMetaModel``` to an attribute and set a route on another attribute.
 4. The Tag Helper generates a paginated list. 
 
 ## How do I use it?
@@ -65,7 +65,7 @@ public ActionResult Index(int page = 1)
 ```
 
 ## What about styling?
-The markup this produces is based on [Foundation Pagination](http://foundation.zurb.com/sites/docs/pagination.html).  This leaves you one of three options.
+The markup this produces is based on Foundation Pagination(http://foundation.zurb.com/sites/docs/pagination.html).  This leaves you one of three options.
 
 1. Use [Foundation](http://foundation.zurb.com/sites/docs/) and it will work out of the box.
 2. Map the classes to Bootstrap stylings.
