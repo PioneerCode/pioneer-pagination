@@ -65,7 +65,7 @@ public ActionResult Index(int page = 1)
 ```
 
 ## What about styling?
-The markup this produces is based on Foundation Pagination(http://foundation.zurb.com/sites/docs/pagination.html).  This leaves you one of three options.
+The markup this produces is based on [Foundation Pagination](http://foundation.zurb.com/sites/docs/pagination.html).  This leaves you one of three options.
 
 1. Use [Foundation](http://foundation.zurb.com/sites/docs/) and it will work out of the box.
 2. Map the classes to Bootstrap stylings.
