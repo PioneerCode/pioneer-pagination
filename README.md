@@ -52,7 +52,9 @@ From your controller, bind the ```PaginatedMetaModel``` to your ```ViewBag```.
 ```csharp
 public ActionResult Index(int page = 1)
 {
+	// Typically obtained from a service/repository
     var totalNumberInCollection = 100;
+	// Typically obtained from configuration
     var itemsPerPage = 5;
     ViewBag.PaginatedMeta = _paginatedMetaService.GetMetaData(totalNumberInCollection, page, itemsPerPage);
     return View("Blog", post);
