@@ -49,7 +49,7 @@ namespace Pioneer.Pagination
             return new PreviousPage
             {
                 Display = display,
-                PageNumber = display ? _pages.First().PageNumber - 1  : 1
+                PageNumber = display ? _pages.First(x => x.IsCurrent).PageNumber - 1  : 1
             };
         }
 
@@ -82,7 +82,7 @@ namespace Pioneer.Pagination
             return new NextPage
             {
                 Display = display,
-                PageNumber = display ? _pages.Last().PageNumber + 1 : NumberOfNodesInPaginatedList + 1
+                PageNumber = display ? _pages.First(x => x.IsCurrent).PageNumber + 1 : NumberOfNodesInPaginatedList + 1
             };
         }
 
