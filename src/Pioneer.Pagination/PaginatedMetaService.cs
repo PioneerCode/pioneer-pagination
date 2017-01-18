@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Threading;
+using System.Linq;
 
 namespace Pioneer.Pagination
 {
@@ -17,6 +17,11 @@ namespace Pioneer.Pagination
         private const int NumberOfNodesInPaginatedList = 5;
 
         /// <summary>
+        /// Allows us to track indexes for previous and next 
+        /// </summary>
+        private List<Page> _pages;
+
+        /// <summary>
         /// Builds meta data to be used with PioneerPaginationTagHelper
         /// </summary>
         /// <param name="collectionSize">Total size of collection we are paginating</param>
@@ -24,11 +29,12 @@ namespace Pioneer.Pagination
         /// <param name="itemsPerPage">How many items per paginated list</param>
         public PaginatedMetaModel GetMetaData(int collectionSize, int selectedPageNumber, int itemsPerPage)
         {
+            _pages =  BuildPageNodes(collectionSize, selectedPageNumber, itemsPerPage);
             return new PaginatedMetaModel
             {
-                NextPage = BuildNextPage(collectionSize, selectedPageNumber, itemsPerPage),
                 PreviousPage = BuildPreviousPage(collectionSize, selectedPageNumber, itemsPerPage),
-                Pages = BuildPageNodes(collectionSize, selectedPageNumber, itemsPerPage)
+                Pages = _pages,
+                NextPage = BuildNextPage(collectionSize, selectedPageNumber, itemsPerPage)
             };
         }
 
@@ -43,7 +49,7 @@ namespace Pioneer.Pagination
             return new PreviousPage
             {
                 Display = display,
-                PageNumber = display ? GetPreviousPageNumber(selectedPageNumber) : 1
+                PageNumber = display ? _pages.First(x => x.IsCurrent).PageNumber - 1  : 1
             };
         }
 
@@ -76,7 +82,7 @@ namespace Pioneer.Pagination
             return new NextPage
             {
                 Display = display,
-                PageNumber = display ? GetNextPageNumber(selectedPageNumber) : NumberOfNodesInPaginatedList + 1
+                PageNumber = display ? _pages.First(x => x.IsCurrent).PageNumber + 1 : NumberOfNodesInPaginatedList + 1
             };
         }
 
@@ -86,14 +92,6 @@ namespace Pioneer.Pagination
         private bool DisplayNextPage(int collectionSize, int selectedPageNumber, int itemsPerPage)
         {
             return selectedPageNumber <= GetLastPageInCollection(collectionSize, itemsPerPage) - (NumberOfNodesInPaginatedList - 2);
-        }
-
-        /// <summary>
-        /// Determine page number for next node
-        /// </summary>
-        private int GetNextPageNumber(int selectedPageNumber)
-        {
-            return selectedPageNumber + NumberOfNodesInPaginatedList + 1;
         }
 
         #endregion
@@ -215,8 +213,6 @@ namespace Pioneer.Pagination
         /// <summary>
         /// Build Selectable Node
         /// </summary>
-        /// <param name="pageNumber"></param>
-        /// <returns></returns>
         private Page BuildNode(int pageNumber)
         {
             return new Page
