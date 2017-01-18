@@ -75,7 +75,7 @@ The markup this produces is based on [Foundation Pagination](http://foundation.z
 
 ## Change Log
 
-### [1.0.3]
+### [1.1.0]
 - Upgrade to LTS 1.0.3
 - Fixed previous and next button indexing
    - Supporting UTs.

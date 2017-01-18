@@ -26,7 +26,7 @@
     },
     "requireLicenseAcceptance": false,
     "summary": "Pioneer.Pagination is an ASP.NET Core Tag Helper that simplifies pagination needs.",
-    "releaseNotes": "Change log maintained an GitHub repository.",
+    "releaseNotes": "Change log maintained at GitHub repository.",
     "tags": [
       "pagination",
       "Tag Helper",
@@ -39,5 +39,5 @@
     ]
   },
   "title": "Pioneer.Pagination",
-  "version": "1.0.3"
+  "version": "1.1.0"
 }
