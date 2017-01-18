@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "Microsoft.AspNetCore.Mvc": "1.0.1",
-    "NETStandard.Library": "1.6.0"
+    "Microsoft.AspNetCore.Mvc": "1.1.0",
+    "NETStandard.Library": "1.6.1"
   },
   "authors": [
     "Chad Ramos"
@@ -26,6 +26,7 @@
     },
     "requireLicenseAcceptance": false,
     "summary": "Pioneer.Pagination is an ASP.NET Core Tag Helper that simplifies pagination needs.",
+    "releaseNotes": "Change log maintained an GitHub repository.",
     "tags": [
       "pagination",
       "Tag Helper",
@@ -38,5 +39,5 @@
     ]
   },
   "title": "Pioneer.Pagination",
-  "version": "1.0.2"
+  "version": "1.0.3"
 }

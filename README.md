@@ -72,3 +72,10 @@ The markup this produces is based on [Foundation Pagination](http://foundation.z
 1. Use [Foundation](http://foundation.zurb.com/sites/docs/) and it will work out of the box.
 2. Map the classes to Bootstrap stylings.
 3. Use the starting [CSS](https://github.com/PioneerCode/pioneer-pagination/blob/master/src/Pioneer.Pagination.Example/wwwroot/pioneer.pagination.css) or [sass](https://github.com/PioneerCode/pioneer-pagination/blob/master/src/Pioneer.Pagination.Example/sass/pioneer.pagination.scss) files provided in the example.
+
+## Change Log
+
+### [1.0.3]
+- Upgrade to LTS 1.0.3
+- Fixed previous and next button indexing
+   - Supporting UTs.

@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System.Linq;
+using Xunit;
 
 namespace Pioneer.Pagination.Tests
 {
@@ -21,6 +22,22 @@ namespace Pioneer.Pagination.Tests
         {
             var result = _sut.GetMetaData(10, 1, 1);
             Assert.True(result.NextPage.Display, "Expected: Next Page Displayed = true");
+        }
+
+        [Fact]
+        public void NextPageNextPageOneIndexPastLastNumericShown()
+        {
+            var result = _sut.GetMetaData(100, 6, 10);
+            Assert.True(result.NextPage.PageNumber == result.Pages.Last().PageNumber + 1,
+                string.Format("Expected: Next Page number == {0}", result.Pages.Last().PageNumber + 1));
+        }
+
+        [Fact]
+        public void PreviousPagePageOneIndexBeforeFirstNumericShown()
+        {
+            var result = _sut.GetMetaData(100, 6, 10);
+            Assert.True(result.PreviousPage.PageNumber == result.Pages.First().PageNumber - 1,
+                string.Format("Expected: Previous Page number == {0}", result.Pages.First().PageNumber - 1));
         }
     }
 }
