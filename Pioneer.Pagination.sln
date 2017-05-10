@@ -1,23 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{31DD40AC-1588-444F-B0E0-3B2DC2EE43A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC442960-93E0-4847-A302-714019B8CEB9}"
 	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Pioneer.Pagination", "src\Pioneer.Pagination\Pioneer.Pagination.xproj", "{FCA470F2-306D-4CF6-BE66-D34E238BC65D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{AD96C849-5335-47FC-95D6-4D0E2F5AC094}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Pioneer.Pagination.Tests", "test\Pioneer.Pagination.Tests\Pioneer.Pagination.Tests.xproj", "{95EFE40A-9BFB-4F4C-950F-47DF686A75D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pioneer.Pagination", "src\Pioneer.Pagination\Pioneer.Pagination.csproj", "{FCA470F2-306D-4CF6-BE66-D34E238BC65D}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Pioneer.Pagination.Example", "src\Pioneer.Pagination.Example\Pioneer.Pagination.Example.xproj", "{376AA76C-A257-479B-A6D0-B05F46B78407}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pioneer.Pagination.Tests", "test\Pioneer.Pagination.Tests\Pioneer.Pagination.Tests.csproj", "{95EFE40A-9BFB-4F4C-950F-47DF686A75D2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pioneer.Pagination.Example", "src\Pioneer.Pagination.Example\Pioneer.Pagination.Example.csproj", "{376AA76C-A257-479B-A6D0-B05F46B78407}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
