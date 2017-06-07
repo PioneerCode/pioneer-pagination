@@ -18,7 +18,6 @@ namespace Pioneer.Pagination.Tests
             Assert.True(result.Pages.Count == 0, "Zero Size Valid Object");
         }
 
-
         [Fact]
         public void Full()
         {
