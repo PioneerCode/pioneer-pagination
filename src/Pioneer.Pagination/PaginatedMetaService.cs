@@ -29,12 +29,35 @@ namespace Pioneer.Pagination
         /// <param name="itemsPerPage">How many items per paginated list</param>
         public PaginatedMetaModel GetMetaData(int collectionSize, int selectedPageNumber, int itemsPerPage)
         {
+            if (collectionSize == 0)
+            {
+                return GetCollectionSizeZeroModel();
+            }
+
             _pages =  BuildPageNodes(collectionSize, selectedPageNumber, itemsPerPage);
             return new PaginatedMetaModel
             {
                 PreviousPage = BuildPreviousPage(collectionSize, selectedPageNumber, itemsPerPage),
                 Pages = _pages,
                 NextPage = BuildNextPage(collectionSize, selectedPageNumber, itemsPerPage)
+            };
+        }
+
+        /// <summary>
+        /// Get a PaginatedMetaModel based on a collection with the size of zero.
+        /// </summary>
+        private static PaginatedMetaModel GetCollectionSizeZeroModel()
+        {
+            return new PaginatedMetaModel
+            {
+                PreviousPage = new PreviousPage
+                {
+                    Display = false
+                },
+                Pages = new List<Page>(),
+                NextPage = new NextPage { 
+                    Display = false
+                }
             };
         }
 
