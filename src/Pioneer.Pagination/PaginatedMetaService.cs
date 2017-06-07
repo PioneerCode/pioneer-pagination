@@ -46,14 +46,18 @@ namespace Pioneer.Pagination
         /// <summary>
         /// Get a PaginatedMetaModel based on a collection with the size of zero.
         /// </summary>
-        /// <returns></returns>
-        private PaginatedMetaModel GetCollectionSizeZeroModel()
+        private static PaginatedMetaModel GetCollectionSizeZeroModel()
         {
             return new PaginatedMetaModel
             {
-                PreviousPage = new PreviousPage(),
+                PreviousPage = new PreviousPage
+                {
+                    Display = false
+                },
                 Pages = new List<Page>(),
-                NextPage = new NextPage()
+                NextPage = new NextPage { 
+                    Display = false
+                }
             };
         }
 
