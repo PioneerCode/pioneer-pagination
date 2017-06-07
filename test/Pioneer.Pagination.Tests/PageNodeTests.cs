@@ -10,6 +10,15 @@ namespace Pioneer.Pagination.Tests
     {
         private readonly PaginatedMetaService _sut = new PaginatedMetaService();
 
+
+        [Fact]
+        public void CollectionSizeZeroReturnsValidObject()
+        {
+            var result = _sut.GetMetaData(0, 1, 1);
+            Assert.True(result.Pages.Count == 0, "Zero Size Valid Object");
+        }
+
+
         [Fact]
         public void Full()
         {
