@@ -1,12 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.4
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{31DD40AC-1588-444F-B0E0-3B2DC2EE43A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC442960-93E0-4847-A302-714019B8CEB9}"
 	ProjectSection(SolutionItems) = preProject
+		publish-notes.txt = publish-notes.txt
 		README.md = README.md
 	EndProjectSection
 EndProject
