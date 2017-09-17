@@ -75,6 +75,11 @@ The markup this produces is based on [Foundation Pagination](http://foundation.z
 
 ## Change Log
 
+### [1.1.2]
+- Fixed Next button not being displayed 
+	- Next should be displayed up until last page.
+	- Added supported UTs. 
+
 ### [1.1.0]
 - Upgrade to LTS 1.0.3
 - Fixed previous and next button indexing

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>Pioneer.Pagination is an ASP.NET Core Tag Helper used to simplify server side pagination needs.</Description>
     <AssemblyTitle>Pioneer.Pagination</AssemblyTitle>
-    <VersionPrefix>1.1.1</VersionPrefix>
+    <VersionPrefix>1.1.2</VersionPrefix>
     <Authors>Chad Ramos</Authors>
     <TargetFrameworks>netstandard1.6;net46</TargetFrameworks>
     <AssemblyName>Pioneer.Pagination</AssemblyName>
