@@ -15,7 +15,7 @@ namespace Pioneer.Pagination.Example.Controllers
         {
             ViewBag.Start = _paginatedMetaService.GetMetaData(100, 2, 4);
             ViewBag.Full = _paginatedMetaService.GetMetaData(100, 5, 4);
-            ViewBag.End = _paginatedMetaService.GetMetaData(100, 24, 4);
+            ViewBag.End = _paginatedMetaService.GetMetaData(100, 25, 4);
             ViewBag.Partial = _paginatedMetaService.GetMetaData(3, 2, 1);
             ViewBag.Zero = _paginatedMetaService.GetMetaData(0, 0, 1);
             return View();

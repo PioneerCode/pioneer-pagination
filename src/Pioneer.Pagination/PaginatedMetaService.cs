@@ -34,7 +34,7 @@ namespace Pioneer.Pagination
                 return GetCollectionSizeZeroModel();
             }
 
-            _pages =  BuildPageNodes(collectionSize, selectedPageNumber, itemsPerPage);
+            _pages = BuildPageNodes(collectionSize, selectedPageNumber, itemsPerPage);
             return new PaginatedMetaModel
             {
                 PreviousPage = BuildPreviousPage(collectionSize, selectedPageNumber, itemsPerPage),
@@ -55,7 +55,8 @@ namespace Pioneer.Pagination
                     Display = false
                 },
                 Pages = new List<Page>(),
-                NextPage = new NextPage { 
+                NextPage = new NextPage
+                {
                     Display = false
                 }
             };
@@ -72,7 +73,7 @@ namespace Pioneer.Pagination
             return new PreviousPage
             {
                 Display = display,
-                PageNumber = display ? _pages.First(x => x.IsCurrent).PageNumber - 1  : 1
+                PageNumber = display ? _pages.First(x => x.IsCurrent).PageNumber - 1 : 1
             };
         }
 
@@ -114,7 +115,7 @@ namespace Pioneer.Pagination
         /// </summary>
         private bool DisplayNextPage(int collectionSize, int selectedPageNumber, int itemsPerPage)
         {
-            return selectedPageNumber <= GetLastPageInCollection(collectionSize, itemsPerPage) - (NumberOfNodesInPaginatedList - 2);
+            return selectedPageNumber < GetLastPageInCollection(collectionSize, itemsPerPage);
         }
 
         #endregion
