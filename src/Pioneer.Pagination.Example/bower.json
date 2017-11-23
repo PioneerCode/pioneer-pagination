@@ -1,8 +1,0 @@
-{
-  "name": "asp.net",
-  "private": true,
-  "dependencies": {
-    "foundation-sites": "^6.2.3"
-  }
-}
- 

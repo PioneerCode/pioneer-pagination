@@ -1,0 +1,18 @@
+﻿@page
+@model IndexModel
+@addTagHelper *, Pioneer.Pagination
+@{
+    ViewData["Title"] = "Pioneer Pagination";
+}
+
+
+<h3>Start List</h3>
+<pioneer-pagination info="@Model.Start" route="/blog"></pioneer-pagination>
+<h3>Middle List</h3>
+<pioneer-pagination info="@Model.Full" route="/blog"></pioneer-pagination>
+<h3>End List</h3>
+<pioneer-pagination info="@Model.End" route="/blog"></pioneer-pagination>
+<h3>Partial List</h3>
+<pioneer-pagination info="@Model.Partial" route="/blog"></pioneer-pagination>
+<h3>Collection Size Zero</h3>
+<pioneer-pagination info="@Model.Zero" route="/blog"></pioneer-pagination>

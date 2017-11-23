@@ -1,23 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{31DD40AC-1588-444F-B0E0-3B2DC2EE43A2}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC442960-93E0-4847-A302-714019B8CEB9}"
 	ProjectSection(SolutionItems) = preProject
 		publish-notes.txt = publish-notes.txt
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{AD96C849-5335-47FC-95D6-4D0E2F5AC094}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pioneer.Pagination", "src\Pioneer.Pagination\Pioneer.Pagination.csproj", "{00614253-6553-435A-A79F-7E5F5C9F6B39}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pioneer.Pagination", "src\Pioneer.Pagination\Pioneer.Pagination.csproj", "{FCA470F2-306D-4CF6-BE66-D34E238BC65D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pioneer.Pagination.Example", "src\Pioneer.Pagination.Example\Pioneer.Pagination.Example.csproj", "{8F471B27-F4F4-446B-8790-82E71F95310F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pioneer.Pagination.Tests", "test\Pioneer.Pagination.Tests\Pioneer.Pagination.Tests.csproj", "{95EFE40A-9BFB-4F4C-950F-47DF686A75D2}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pioneer.Pagination.Example", "src\Pioneer.Pagination.Example\Pioneer.Pagination.Example.csproj", "{376AA76C-A257-479B-A6D0-B05F46B78407}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pioneer.Pagination.Tests", "test\Pioneer.Pagination.Tests\Pioneer.Pagination.Tests.csproj", "{4C36E16B-9BCE-46FE-83E7-0DA830BEE3EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,25 +21,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FCA470F2-306D-4CF6-BE66-D34E238BC65D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FCA470F2-306D-4CF6-BE66-D34E238BC65D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FCA470F2-306D-4CF6-BE66-D34E238BC65D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FCA470F2-306D-4CF6-BE66-D34E238BC65D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95EFE40A-9BFB-4F4C-950F-47DF686A75D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95EFE40A-9BFB-4F4C-950F-47DF686A75D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95EFE40A-9BFB-4F4C-950F-47DF686A75D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95EFE40A-9BFB-4F4C-950F-47DF686A75D2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{376AA76C-A257-479B-A6D0-B05F46B78407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{376AA76C-A257-479B-A6D0-B05F46B78407}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{376AA76C-A257-479B-A6D0-B05F46B78407}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{376AA76C-A257-479B-A6D0-B05F46B78407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00614253-6553-435A-A79F-7E5F5C9F6B39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00614253-6553-435A-A79F-7E5F5C9F6B39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00614253-6553-435A-A79F-7E5F5C9F6B39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00614253-6553-435A-A79F-7E5F5C9F6B39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F471B27-F4F4-446B-8790-82E71F95310F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F471B27-F4F4-446B-8790-82E71F95310F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F471B27-F4F4-446B-8790-82E71F95310F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F471B27-F4F4-446B-8790-82E71F95310F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C36E16B-9BCE-46FE-83E7-0DA830BEE3EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C36E16B-9BCE-46FE-83E7-0DA830BEE3EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C36E16B-9BCE-46FE-83E7-0DA830BEE3EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C36E16B-9BCE-46FE-83E7-0DA830BEE3EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{FCA470F2-306D-4CF6-BE66-D34E238BC65D} = {31DD40AC-1588-444F-B0E0-3B2DC2EE43A2}
-		{95EFE40A-9BFB-4F4C-950F-47DF686A75D2} = {AD96C849-5335-47FC-95D6-4D0E2F5AC094}
-		{376AA76C-A257-479B-A6D0-B05F46B78407} = {31DD40AC-1588-444F-B0E0-3B2DC2EE43A2}
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2B63E1B-A788-4F34-A882-CC6172EB0ECA}
 	EndGlobalSection
 EndGlobal
