@@ -7,13 +7,18 @@
   <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
 </head>
 <body>
-  <div class="container body-content">
+<div class="container body-content">
+  <nav>
+    <h1>Pioneer Pagination</h1>
+  </nav>
+  <div class="content">
     @RenderBody()
-    <hr />
-    <footer>
-      <p>&copy; 2017 - Pioneer.Pagination.Example</p>
-    </footer>
   </div>
+  <hr/>
+  <footer>
+    <p>&copy; 2017 - Pioneer.Pagination.Example</p>
+  </footer>
+</div>
   @RenderSection("Scripts", required: false)
 </body>
 </html>
