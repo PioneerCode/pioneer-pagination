@@ -75,6 +75,10 @@ The markup this produces is based on [Foundation Pagination](http://foundation.z
 
 ## Change Log
 
+### [2.0.0]
+- Migarted to .NET Standard 2.x
+- Migarted example project to ASP.NET Core 2.x
+
 ### [1.1.2]
 - Fixed Next button not being displayed 
 	- Next should be displayed up until last page.
