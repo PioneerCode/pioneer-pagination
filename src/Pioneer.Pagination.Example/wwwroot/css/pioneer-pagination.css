@@ -1,0 +1,41 @@
+﻿ul.pagination {
+    margin: 0 0 1rem
+}
+
+    ul.pagination .current {
+        padding: 0.1875rem 0.625rem;
+        background: #2199e8;
+        color: #fefefe;
+        cursor: default
+    }
+
+    ul.pagination .pagination-next a::after {
+        content: '\00bb';
+        display: inline-block;
+        margin-left: 0.5rem
+    }
+
+    ul.pagination .pagination-previous a::before {
+        content: '\00ab';
+        display: inline-block;
+        margin-right: 0.5rem
+    }
+
+    ul.pagination li {
+        display: inline-block
+    }
+
+        ul.pagination li .show-for-sr {
+            display: none
+        }
+
+        ul.pagination li a {
+            color: #0a0a0a;
+            display: block;
+            padding: 0.1875rem 0.625rem;
+            border-radius: 0
+        }
+
+            ul.pagination li a:hover {
+                background: #e6e6e6
+            }
