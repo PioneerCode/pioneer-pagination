@@ -5,38 +5,14 @@
     ViewData["Title"] = "Pioneer Pagination";
 }
 
-<div class="row">
-  <div class="col-lg-12">
-    <h1>Application uses</h1>
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-12">
-    <h3>Start List</h3>
-    <pioneer-pagination info="@Model.Start" route="/blog"></pioneer-pagination>
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-12">
-    <h3>Middle List</h3>
-    <pioneer-pagination info="@Model.Full" route="/blog"></pioneer-pagination>
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-12">
-    <h3>End List</h3>
-    <pioneer-pagination info="@Model.End" route="/blog"></pioneer-pagination>
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-12">
-    <h3>Partial List</h3>
-    <pioneer-pagination info="@Model.Partial" route="/blog"></pioneer-pagination>
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-12">
-    <h3>Collection Size Zero</h3>
-    <pioneer-pagination info="@Model.Zero" route="/blog"></pioneer-pagination>
-  </div>
-</div>
+<h1>Pioneer Pagination</h1>
+<h3>Start List</h3>
+<pioneer-pagination info="@Model.Start" route="/blog"></pioneer-pagination>
+<h3>Middle List</h3>
+<pioneer-pagination info="@Model.Full" route="/blog"></pioneer-pagination>
+<h3>End List</h3>
+<pioneer-pagination info="@Model.End" route="/blog"></pioneer-pagination>
+<h3>Partial List</h3>
+<pioneer-pagination info="@Model.Partial" route="/blog"></pioneer-pagination>
+<h3>Collection Size Zero</h3>
+<pioneer-pagination info="@Model.Zero" route="/blog"></pioneer-pagination>
