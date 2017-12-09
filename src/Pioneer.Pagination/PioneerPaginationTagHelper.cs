@@ -10,6 +10,16 @@ namespace Pioneer.Pagination
         public PaginatedMetaModel Info { get; set; }
 
         /// <summary>
+        /// Text to display for previous page
+        /// </summary>
+        public string PreviousPageText { get; set; } = "Previous";
+
+        /// <summary>
+        /// Text to display for next page
+        /// </summary>
+        public string NextPageText { get; set; } = "Next";
+
+        /// <summary>
         /// Base route minus page value
         /// </summary>
         public string Route { get; set; }
@@ -40,7 +50,7 @@ namespace Pioneer.Pagination
         {
             var html =
 $@"<li class=""pagination-previous"">
-    <a href=""{Route}/{Info.PreviousPage.PageNumber}"" aria-label=""Previous page"">Previous <span class=""show-for-sr"">page</span></a>
+    <a href=""{Route}/{Info.PreviousPage.PageNumber}"" aria-label=""{PreviousPageText} page"">{PreviousPageText} <span class=""show-for-sr"">page</span></a>
 </li>";
 
             output.Content.SetHtmlContent(output.Content.GetContent() + html);
@@ -53,7 +63,7 @@ $@"<li class=""pagination-previous"">
         {
             var html =
 $@"<li class=""pagination-next"">
-    <a href=""{Route}/{Info.NextPage.PageNumber}"" aria-label=""Next page"">Next <span class=""show-for-sr"">page</span></a>
+    <a href=""{Route}/{Info.NextPage.PageNumber}"" aria-label=""{NextPageText} page"">{NextPageText} <span class=""show-for-sr"">page</span></a>
 </li>";
 
             output.Content.SetHtmlContent(output.Content.GetContent() + html);
