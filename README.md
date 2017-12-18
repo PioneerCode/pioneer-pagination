@@ -76,7 +76,7 @@ The markup this produces is based on [Foundation Pagination](http://foundation.z
 ## Change Log
 
 ### [2.1.0]
-- Add configuration for previous and next verbiage - @ryn0 
+- Add configuration for previous and next verbiage - [ryn0](https://github.com/ryn0)
 
 ### [2.0.0]
 - Migarted to .NET Standard 2.x
