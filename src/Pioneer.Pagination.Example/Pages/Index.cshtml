@@ -1,5 +1,6 @@
 ﻿@page
-@model IndexModel
+@using Pioneer.Pagination.Example.Pages
+@model Pioneer.Pagination.Example.Pages.IndexModel
 @addTagHelper *, Pioneer.Pagination
 @{
     ViewData["Title"] = "Pioneer Pagination";
@@ -7,7 +8,7 @@
 
 
 <h3>Start List</h3>
-<pioneer-pagination info="@Model.Start" route="/blog"></pioneer-pagination>
+<pioneer-pagination info="@Model.Start" route="/blog" next-page-text="hey"></pioneer-pagination>
 <h3>Middle List</h3>
 <pioneer-pagination info="@Model.Full" route="/blog"></pioneer-pagination>
 <h3>End List</h3>

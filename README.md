@@ -66,6 +66,17 @@ public ActionResult Index(int page = 1)
 <pioneer-pagination info="@ViewBag.PaginatedMeta" route="/blog"></pioneer-pagination>
 ```
 
+### Configuration
+
+- **previous-page-text**
+  - default = next
+- **previous-page-text**
+  - default = previous
+
+```csharp
+<pioneer-pagination info="@ViewBag.PaginatedMeta" route="/blog" previous-page-text="hey" next-page-text="you"></pioneer-pagination>
+```
+
 ## What about styling?
 The markup this produces is based on [Foundation Pagination](http://foundation.zurb.com/sites/docs/pagination.html).  This leaves you one of three options.
 
