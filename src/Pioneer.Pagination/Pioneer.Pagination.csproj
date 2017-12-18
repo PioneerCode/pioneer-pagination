@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>2.0.0.0</Version>
+    <Version>2.2.0.0</Version>
     <Authors>Chad Ramos</Authors>
     <Company>Pioneer Code</Company>
     <Description>Pioneer.Pagination is an ASP.NET Core Tag Helper used to simplify server side pagination needs.</Description>
     <PackageTags>pagination;Tag Helper;.net core;ASP .NET;core;paging;pager;page</PackageTags>
-    <PackageReleaseNotes>Change log maintained at GitHub repository.</PackageReleaseNotes>
+    <PackageReleaseNotes>Change log maintained at GitHub repository: https://github.com/PioneerCode/pioneer-pagination#change-log.</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/PioneerCode/pioneer-pagination</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIconUrl>http://pioneercode.com/images/logo-large.png</PackageIconUrl>
