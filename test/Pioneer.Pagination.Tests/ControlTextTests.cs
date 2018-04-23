@@ -21,14 +21,14 @@ namespace Pioneer.Pagination.Tests
             (result, encoder) =>
             {
                 var tagHelperContent = new DefaultTagHelperContent();
-                tagHelperContent.SetHtmlContent(string.Empty);
-                return Task.FromResult<TagHelperContent>(tagHelperContent);
+                var helperContent = tagHelperContent.SetHtmlContent(string.Empty);
+                return Task.FromResult(helperContent);
             });
 
         [Fact]
         public void CanShowCustomPreviousPageText()
         {
-            var previousPageText = "Backward";
+            const string previousPageText = "Backward";
             _sut.Info = _metaData.GetMetaData(10, 10, 1);
             _sut.PreviousPageText = previousPageText;
 
@@ -41,7 +41,7 @@ namespace Pioneer.Pagination.Tests
         [Fact]
         public void CanShowCustomNextPageText()
         {
-            var nextPageText = "Forward";
+            const string nextPageText = "Forward";
             _sut.Info = _metaData.GetMetaData(10, 1, 1);
             _sut.NextPageText = nextPageText;
 
