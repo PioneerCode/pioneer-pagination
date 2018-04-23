@@ -11,12 +11,12 @@ namespace Pioneer.Pagination.Tests
         private readonly PioneerPaginationTagHelper _sut = new PioneerPaginationTagHelper();
         private readonly PaginatedMetaService _metaData = new PaginatedMetaService();
 
-        TagHelperContext context = new TagHelperContext(
+        private readonly TagHelperContext _context = new TagHelperContext(
                 new TagHelperAttributeList(),
                 new Dictionary<object, object>(),
                 Guid.NewGuid().ToString("N"));
 
-        TagHelperOutput output = new TagHelperOutput("ul",
+        private readonly TagHelperOutput _output = new TagHelperOutput("ul",
             new TagHelperAttributeList(),
             (result, encoder) =>
             {
@@ -32,8 +32,8 @@ namespace Pioneer.Pagination.Tests
             _sut.Info = _metaData.GetMetaData(10, 10, 1);
             _sut.PreviousPageText = previousPageText;
 
-            _sut.Process(context, output);
-            var markupResult = output.Content.GetContent();
+            _sut.Process(_context, _output);
+            var markupResult = _output.Content.GetContent();
 
             Assert.Contains(previousPageText, markupResult);
         }
@@ -45,8 +45,8 @@ namespace Pioneer.Pagination.Tests
             _sut.Info = _metaData.GetMetaData(10, 1, 1);
             _sut.NextPageText = nextPageText;
 
-            _sut.Process(context, output);
-            var markupResult = output.Content.GetContent();
+            _sut.Process(_context, _output);
+            var markupResult = _output.Content.GetContent();
 
             Assert.Contains(nextPageText, markupResult);
         }
