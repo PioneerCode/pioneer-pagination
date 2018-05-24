@@ -43,10 +43,16 @@ namespace Pioneer.Pagination
         {
             var lastPage = _pageInCollectionService.GetLastPageInCollection(collectionSize, itemsPerPage);
 
-            // Cover > out of range execptions
+            // Cover > out of range exceptions
             if (lastPage < selectedPageNumber)
             {
                 selectedPageNumber = lastPage;
+            }
+
+            // Cover < out of range exceptions
+            if (selectedPageNumber < 1)
+            {
+                selectedPageNumber = 1;
             }
 
             if (collectionSize == 0)
