@@ -3,7 +3,6 @@ using System.Linq;
 
 namespace Pioneer.Pagination
 {
-
     public interface IPreviousPageService
     {
         PreviousPage BuildPreviousPage(List<Page> pages, int collectionSize, int selectedPageNumber, int itemsPerPage);

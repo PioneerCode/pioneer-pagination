@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace Pioneer.Pagination
 {
@@ -23,11 +22,15 @@ namespace Pioneer.Pagination
 
         private readonly IPreviousPageService _previousPageService;
         private readonly INextPageService _nextPageService;
+        private readonly INodeService _nodeService;
+        private readonly ILastPageInCollectionService _pageInCollectionService;
 
         public PaginatedMetaService()
         {
             _previousPageService = new PreviousPageService();
             _nextPageService = new NextPageService();
+            _nodeService = new NodeService();
+            _pageInCollectionService = new LastPageInCollectionService();
         }
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace Pioneer.Pagination
         /// <param name="itemsPerPage">How many items per paginated list</param>
         public PaginatedMetaModel GetMetaData(int collectionSize, int selectedPageNumber, int itemsPerPage)
         {
-            var lastPage = GetLastPageInCollection(collectionSize, itemsPerPage);
+            var lastPage = _pageInCollectionService.GetLastPageInCollection(collectionSize, itemsPerPage);
 
             // Cover > out of range execptions
             if (lastPage < selectedPageNumber)
@@ -52,7 +55,7 @@ namespace Pioneer.Pagination
                 return GetCollectionSizeZeroModel();
             }
 
-            _pages = BuildPageNodes(collectionSize, selectedPageNumber, itemsPerPage);
+            _pages = _nodeService.BuildPageNodes(collectionSize, selectedPageNumber, itemsPerPage, NumberOfNodesInPaginatedList);
             return new PaginatedMetaModel
             {
                 PreviousPage = _previousPageService.BuildPreviousPage(_pages, collectionSize, selectedPageNumber, itemsPerPage),
@@ -84,153 +87,6 @@ namespace Pioneer.Pagination
                     Display = false
                 }
             };
-        }
-
-
-        #region Page Nodes
-
-        /// <summary>
-        /// Build individual page nodes
-        /// </summary>
-        private static List<Page> BuildPageNodes(int collectionSize, int selectedPageNumber, int itemsPerPage)
-        {
-            var lastPage = GetLastPageInCollection(collectionSize, itemsPerPage);
-
-            // If we have less then NumberOfNodesInPaginatedList * itemPage in our collectionSize,
-            // then we know we have a partial list
-            if (NumberOfNodesInPaginatedList * itemsPerPage > collectionSize)
-            {
-                return BuildPartialList(collectionSize, selectedPageNumber, itemsPerPage);
-            }
-
-            //  We are at the first collection of nodes in paginated list: 1, 2 & 3
-            if (selectedPageNumber < NumberOfNodesInPaginatedList - 2)
-            {
-                return BuildStartList(selectedPageNumber);
-            }
-
-            // We are at the last collection of nodes in paginated list : last -2 , last - 1 & last
-            if (selectedPageNumber > lastPage - (NumberOfNodesInPaginatedList - 2))
-            {
-                return BuildEndList(collectionSize, selectedPageNumber, itemsPerPage);
-            }
-
-            // We are at an in between collection of node in paginated list
-            return BuildFullList(selectedPageNumber);
-        }
-
-        /// <summary>
-        /// Build a full (NumberOfNodesInPaginatedList) collection of page nodes
-        /// [ ][ ][ ][x][x][x][x][x][x][x][x][x][x][ ][ ][ ]
-        /// </summary>
-        private static List<Page> BuildFullList(int selectedPageNumber)
-        {
-            var pages = new List<Page>
-            {
-                BuildNode(selectedPageNumber - 2),
-                BuildNode(selectedPageNumber - 1),
-                BuildNode(selectedPageNumber),
-                BuildNode(selectedPageNumber + 1),
-                BuildNode(selectedPageNumber + 2)
-            };
-
-            pages[2].IsCurrent = true;
-
-            return pages;
-        }
-
-        /// <summary>
-        /// Build a full (NumberOfNodesInPaginatedList) collection of page nodes
-        /// [x][x][ ][ ][ ][ ][ ][ ][ ][ ] ][ ][ ][ ][ ][ ]
-        /// </summary>
-        private static List<Page> BuildPartialList(int collectionSize, int selectedPageNumber, int itemsPerPage)
-        {
-            var pages = new List<Page>();
-            for (var i = 0; i < GetLastPageInCollection(collectionSize, itemsPerPage); i++)
-            {
-                pages.Add(BuildNode(i + 1));
-            }
-
-            pages[selectedPageNumber - 1].IsCurrent = true;
-
-            return pages;
-        }
-
-        /// <summary>
-        /// Build list when selected page falls into first collection of node list
-        /// Start shifting after three
-        /// [*][*][*][x][x][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]
-        /// </summary>
-        private static List<Page> BuildStartList(int selectedPageNumber)
-        {
-            var pages = new List<Page>
-            {
-                BuildNode(1),
-                BuildNode(2),
-                BuildNode(3),
-                BuildNode(4),
-                BuildNode(5)
-            };
-
-            pages[selectedPageNumber - 1].IsCurrent = true;
-
-            return pages;
-        }
-
-        /// <summary>
-        /// Build list when selected page falls into last collection of nodes
-        /// Stop shifting after three from end
-        /// [ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][x][x][*][*][*]
-        /// </summary>
-        private static List<Page> BuildEndList(int collectionSize, int selectedPageNumber, int itemsPerPage)
-        {
-            var lastPage = GetLastPageInCollection(collectionSize, itemsPerPage);
-
-
-            var pages = new List<Page>
-            {
-                BuildNode(lastPage - 4),
-                BuildNode(lastPage - 3),
-                BuildNode(lastPage - 2),
-                BuildNode(lastPage - 1),
-                BuildNode(lastPage)
-            };
-
-            var unshiftedIndex = lastPage - selectedPageNumber;
-            pages[NumberOfNodesInPaginatedList - 1 - unshiftedIndex].IsCurrent = true;
-
-            return pages;
-        }
-
-        /// <summary>
-        /// Build Selectable Node
-        /// </summary>
-        private static Page BuildNode(int pageNumber)
-        {
-            return new Page
-            {
-                IsCurrent = false,
-                PageNumber = pageNumber
-            };
-        }
-
-        #endregion
-
-        /// <summary>
-        /// Get last page number in collection
-        /// </summary>
-        private static int GetLastPageInCollection(int collectionSize, int itemsPerPage)
-        {
-            var lastPage = (double)collectionSize / itemsPerPage;
-
-            // If whole number, we know nothing exist past lastPage
-            if (lastPage % 1 == 0)
-            {
-                return (int)lastPage;
-            }
-
-            // If not whole number, we know there should be one more page past lastPage
-            return (int)lastPage + 1;
         }
     }
 }
