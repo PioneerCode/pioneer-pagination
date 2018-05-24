@@ -21,6 +21,13 @@ namespace Pioneer.Pagination
         /// </summary>
         private List<Page> _pages;
 
+        private readonly IPreviousPageService _previousPageService;
+
+        public PaginatedMetaService()
+        {
+            _previousPageService = new PreviousPageService();
+        }
+
         /// <summary>
         /// Builds meta data to be used with PioneerPaginationTagHelper
         /// </summary>
@@ -29,6 +36,15 @@ namespace Pioneer.Pagination
         /// <param name="itemsPerPage">How many items per paginated list</param>
         public PaginatedMetaModel GetMetaData(int collectionSize, int selectedPageNumber, int itemsPerPage)
         {
+            var lastPage = GetLastPageInCollection(collectionSize, itemsPerPage);
+
+            // Cover > out of range execptions
+            if (lastPage < selectedPageNumber)
+            {
+                selectedPageNumber = lastPage;
+            }
+
+
             if (collectionSize == 0)
             {
                 return GetCollectionSizeZeroModel();
@@ -37,7 +53,7 @@ namespace Pioneer.Pagination
             _pages = BuildPageNodes(collectionSize, selectedPageNumber, itemsPerPage);
             return new PaginatedMetaModel
             {
-                PreviousPage = BuildPreviousPage(collectionSize, selectedPageNumber, itemsPerPage),
+                PreviousPage = _previousPageService.BuildPreviousPage(_pages, collectionSize, selectedPageNumber, itemsPerPage),
                 Pages = _pages,
                 NextPage = BuildNextPage(collectionSize, selectedPageNumber, itemsPerPage)
             };
@@ -125,7 +141,7 @@ namespace Pioneer.Pagination
         /// <summary>
         /// Build individual page nodes
         /// </summary>
-        private List<Page> BuildPageNodes(int collectionSize, int selectedPageNumber, int itemsPerPage)
+        private static List<Page> BuildPageNodes(int collectionSize, int selectedPageNumber, int itemsPerPage)
         {
             var lastPage = GetLastPageInCollection(collectionSize, itemsPerPage);
 
@@ -156,7 +172,7 @@ namespace Pioneer.Pagination
         /// Build a full (NumberOfNodesInPaginatedList) collection of page nodes
         /// [ ][ ][ ][x][x][x][x][x][x][x][x][x][x][ ][ ][ ]
         /// </summary>
-        private List<Page> BuildFullList(int selectedPageNumber)
+        private static List<Page> BuildFullList(int selectedPageNumber)
         {
             var pages = new List<Page>
             {
@@ -176,7 +192,7 @@ namespace Pioneer.Pagination
         /// Build a full (NumberOfNodesInPaginatedList) collection of page nodes
         /// [x][x][ ][ ][ ][ ][ ][ ][ ][ ] ][ ][ ][ ][ ][ ]
         /// </summary>
-        private List<Page> BuildPartialList(int collectionSize, int selectedPageNumber, int itemsPerPage)
+        private static List<Page> BuildPartialList(int collectionSize, int selectedPageNumber, int itemsPerPage)
         {
             var pages = new List<Page>();
             for (var i = 0; i < GetLastPageInCollection(collectionSize, itemsPerPage); i++)
@@ -194,7 +210,7 @@ namespace Pioneer.Pagination
         /// Start shifting after three
         /// [*][*][*][x][x][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]
         /// </summary>
-        private List<Page> BuildStartList(int selectedPageNumber)
+        private static List<Page> BuildStartList(int selectedPageNumber)
         {
             var pages = new List<Page>
             {
@@ -215,9 +231,10 @@ namespace Pioneer.Pagination
         /// Stop shifting after three from end
         /// [ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][x][x][*][*][*]
         /// </summary>
-        private List<Page> BuildEndList(int collectionSize, int selectedPageNumber, int itemsPerPage)
+        private static List<Page> BuildEndList(int collectionSize, int selectedPageNumber, int itemsPerPage)
         {
             var lastPage = GetLastPageInCollection(collectionSize, itemsPerPage);
+
 
             var pages = new List<Page>
             {
@@ -237,7 +254,7 @@ namespace Pioneer.Pagination
         /// <summary>
         /// Build Selectable Node
         /// </summary>
-        private Page BuildNode(int pageNumber)
+        private static Page BuildNode(int pageNumber)
         {
             return new Page
             {
@@ -251,7 +268,7 @@ namespace Pioneer.Pagination
         /// <summary>
         /// Get last page number in collection
         /// </summary>
-        private int GetLastPageInCollection(int collectionSize, int itemsPerPage)
+        private static int GetLastPageInCollection(int collectionSize, int itemsPerPage)
         {
             var lastPage = (double)collectionSize / itemsPerPage;
 
