@@ -22,10 +22,12 @@ namespace Pioneer.Pagination
         private List<Page> _pages;
 
         private readonly IPreviousPageService _previousPageService;
+        private readonly INextPageService _nextPageService;
 
         public PaginatedMetaService()
         {
             _previousPageService = new PreviousPageService();
+            _nextPageService = new NextPageService();
         }
 
         /// <summary>
@@ -55,7 +57,13 @@ namespace Pioneer.Pagination
             {
                 PreviousPage = _previousPageService.BuildPreviousPage(_pages, collectionSize, selectedPageNumber, itemsPerPage),
                 Pages = _pages,
-                NextPage = BuildNextPage(collectionSize, selectedPageNumber, itemsPerPage)
+                NextPage = _nextPageService.BuildNextPage(
+                    _pages, 
+                    collectionSize,
+                    selectedPageNumber, 
+                    itemsPerPage, 
+                    NumberOfNodesInPaginatedList
+                )
             };
         }
 
@@ -78,63 +86,6 @@ namespace Pioneer.Pagination
             };
         }
 
-        #region Previous Page
-
-        /// <summary>
-        /// Build previous page object
-        /// </summary>
-        private PreviousPage BuildPreviousPage(int collectionSize, int selectedPageNumber, int itemsPerPage)
-        {
-            var display = DisplayPreviousPage(collectionSize, selectedPageNumber, itemsPerPage);
-            return new PreviousPage
-            {
-                Display = display,
-                PageNumber = display ? _pages.First(x => x.IsCurrent).PageNumber - 1 : 1
-            };
-        }
-
-        /// <summary>
-        /// Determine if we need a Previous Page
-        /// </summary>
-        private bool DisplayPreviousPage(int collectionSize, int selectedPageNumber, int itemsPerPage)
-        {
-            return selectedPageNumber > 1 && collectionSize >= itemsPerPage;
-        }
-
-        /// <summary>
-        /// Determine page number for previous node
-        /// </summary>
-        private int GetPreviousPageNumber(int selectedPageNumber)
-        {
-            return selectedPageNumber > 1 ? selectedPageNumber - 1 : 1;
-        }
-
-        #endregion
-
-        #region Next Page
-
-        /// <summary>
-        /// Build next page object
-        /// </summary>
-        private NextPage BuildNextPage(int collectionSize, int selectedPageNumber, int itemsPerPage)
-        {
-            var display = DisplayNextPage(collectionSize, selectedPageNumber, itemsPerPage);
-            return new NextPage
-            {
-                Display = display,
-                PageNumber = display ? _pages.First(x => x.IsCurrent).PageNumber + 1 : NumberOfNodesInPaginatedList + 1
-            };
-        }
-
-        /// <summary>
-        /// Determine if we need a Next Page
-        /// </summary>
-        private bool DisplayNextPage(int collectionSize, int selectedPageNumber, int itemsPerPage)
-        {
-            return selectedPageNumber < GetLastPageInCollection(collectionSize, itemsPerPage);
-        }
-
-        #endregion
 
         #region Page Nodes
 
