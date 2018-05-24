@@ -49,7 +49,6 @@ namespace Pioneer.Pagination
                 selectedPageNumber = lastPage;
             }
 
-
             if (collectionSize == 0)
             {
                 return GetCollectionSizeZeroModel();

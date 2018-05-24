@@ -38,8 +38,15 @@ namespace Pioneer.Pagination
             return new NextPage
             {
                 Display = display,
-                PageNumber = display ? pages.First(x => x.IsCurrent).PageNumber + 1 : numberOfNodesInPaginatedList + 1
+                PageNumber = selectedPageNumber == collectionSize ?
+                    selectedPageNumber :
+                    GetPageNumber(display, pages, numberOfNodesInPaginatedList)
             };
+        }
+
+        private static int GetPageNumber(bool display, IEnumerable<Page> pages, int numberOfNodesInPaginatedList)
+        {
+            return display ? pages.First(x => x.IsCurrent).PageNumber + 1 : numberOfNodesInPaginatedList + 1;
         }
 
         /// <summary>

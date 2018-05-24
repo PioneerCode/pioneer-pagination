@@ -12,14 +12,14 @@ namespace Pioneer.Pagination.Tests
         [Fact]
         public void NextPageIsLastPageInCollectionWhenRequestedPageIsGreatedThenCollection()
         {
-            var result = _sut.GetMetaData(10, 11, 1);
+            var result = _sut.GetMetaData(10, 50, 1);
             Assert.True(result.NextPage.PageNumber == 10, "Expected: Last Page ");
         }
 
         [Fact]
         public void PreviousPageIsLastPageMinusOneInCollectionWhenRequestedPageIsGreatedThenCollection()
         {
-            var result = _sut.GetMetaData(10, 11, 1);
+            var result = _sut.GetMetaData(10, 100, 1);
             Assert.True(result.PreviousPage.PageNumber == 9, "Expected: Last Page ");
         }
 
