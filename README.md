@@ -84,6 +84,12 @@ The markup this produces is based on [Foundation Pagination](http://foundation.z
 2. Map the classes to Bootstrap stylings.
 3. Use the starting [CSS](https://github.com/PioneerCode/pioneer-pagination/blob/master/src/Pioneer.Pagination.Example/wwwroot/pioneer.pagination.css) or [sass](https://github.com/PioneerCode/pioneer-pagination/blob/master/src/Pioneer.Pagination.Example/sass/pioneer.pagination.scss) files provided in the example.
 
+## Clamping
+The services will clamp out of range indexes passed to `_paginatedMetaService.GetMetaData`.  If you pass a current page value < 1, it will be clamped to 1.
+If you pass a current page value > then the `collectionSize \ itemsPerPage` , it will get clamped to the last valid page.
+
+Because the aggragation of data is handled independetly of the actual tag helper, you will need to insure you are clamping the requests coming from the user in the same manner.
+
 ## Change Log
 
 ### [2.1.1]
