@@ -86,6 +86,9 @@ The markup this produces is based on [Foundation Pagination](http://foundation.z
 
 ## Change Log
 
+### [2.1.1]
+- Account for out of range request for a page by clamping them. 
+
 ### [2.1.0]
 - Add configuration for previous and next verbiage - [ryn0](https://github.com/ryn0)
 
