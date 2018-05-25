@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pioneer.Pagination", "src\P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pioneer.Pagination.Example", "src\Pioneer.Pagination.Example\Pioneer.Pagination.Example.csproj", "{8F471B27-F4F4-446B-8790-82E71F95310F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pioneer.Pagination.Tests", "test\Pioneer.Pagination.Tests\Pioneer.Pagination.Tests.csproj", "{4C36E16B-9BCE-46FE-83E7-0DA830BEE3EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pioneer.Pagination.Tests", "test\Pioneer.Pagination.Tests\Pioneer.Pagination.Tests.csproj", "{4C36E16B-9BCE-46FE-83E7-0DA830BEE3EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
