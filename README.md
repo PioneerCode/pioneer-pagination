@@ -1,5 +1,8 @@
 # Pioneer Pagination
 
+[![](https://img.shields.io/nuget/v/Pioneer.Pagination.svg)](https://www.nuget.org/packages/Pioneer.Pagination/)
+[![](https://img.shields.io/nuget/dt/Pioneer.Pagination.svg)](https://www.nuget.org/packages/Pioneer.Pagination/)
+
 
 ## What is Pioneer Pagination?
 Pioneer Pagination is an ASP.Net Core Tag Helper that produces a paginated list which is configured to a desired state.
