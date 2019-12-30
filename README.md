@@ -95,6 +95,9 @@ Because the aggragation of data is handled independetly of the actual tag helper
 
 ## Change Log
 
+### [2.1.2]
+- Security updates. 
+
 ### [2.1.1]
 - Account for out of range request for a page by clamping them. 
 
