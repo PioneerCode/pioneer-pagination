@@ -12,7 +12,7 @@ namespace Pioneer.Pagination.Example.Pages
         public PaginatedMetaModel Start { get; set; }
         public PaginatedMetaModel Full { get; set; }
         public PaginatedMetaModel End { get; set; }
-        public PaginatedMetaModel Partial { get; set; }
+        public PaginatedMetaModel Subset { get; set; }
         public PaginatedMetaModel Zero { get; set; }
 
         private readonly IPaginatedMetaService _paginatedMetaService;
@@ -27,7 +27,7 @@ namespace Pioneer.Pagination.Example.Pages
             Start = _paginatedMetaService.GetMetaData(100, 2, 4);
             Full = _paginatedMetaService.GetMetaData(100, 5, 4);
             End = _paginatedMetaService.GetMetaData(100, 25, 4);
-            Partial = _paginatedMetaService.GetMetaData(3, 2, 1);
+            Subset = _paginatedMetaService.GetMetaData(3, 2, 1);
             Zero = _paginatedMetaService.GetMetaData(0, 0, 1);
         }
     }
