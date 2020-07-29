@@ -95,6 +95,10 @@ Because the aggragation of data is handled independetly of the actual tag helper
 
 ## Change Log
 
+### [3.0]
+- Migrate to .net standard 2.1
+- Migrate example to .net core 3.1
+
 ### [2.1.2]
 - Security updates. 
 
