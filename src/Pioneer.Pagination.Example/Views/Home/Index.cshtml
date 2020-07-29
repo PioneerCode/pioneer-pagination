@@ -1,10 +1,5 @@
-﻿@page
-@model Pioneer.Pagination.Example.Pages.IndexModel
+﻿@model Pioneer.Pagination.Example.Models.HomeViewModel
 @addTagHelper *, Pioneer.Pagination
-@{
-    ViewData["Title"] = "Pioneer Pagination";
-}
-
 
 <h3>Start List</h3>
 <pioneer-pagination info="@Model.Start" route="/blog" next-page-text="hey"></pioneer-pagination>
@@ -16,3 +11,4 @@
 <pioneer-pagination info="@Model.Subset" route="/blog"></pioneer-pagination>
 <h3>Collection Size Zero</h3>
 <pioneer-pagination info="@Model.Zero" route="/blog"></pioneer-pagination>
+
